@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>This is a tab</title>
+		
+		<style>
+		
+			body{
+				padding: 15px 12px;
+			}
+			.greenB			{ border-color: green; }
+			.blueB			{ border-color: blue;  }
+		
+			div.visible 	{ display: block; }
+			div.invisible 	{ display: none; }
+
+			#outterDiv		{
+							/* display: grid;
+							place-items: center;
+							align-content: center; */
+							/* min-height: 100vh; */
+							background-color: rgba(255, 255, 255, 0.493);
+							width: 4000px;
+     						height:4000px;
+							}
+			.outterdiv h1{
+				display: flex;
+				flex-direction: column;
+				justify-items: center;
+				align-items: center;
+			}
+			
+			#outputDiv		{
+								border-style: none;
+								color: rgb(17, 15, 15);  /* font */
+								width: 1000px;
+     							height:100px;
+							}
+
+			#errorDiv       {
+								border-style: none;
+								color: rgb(110, 15, 28);
+								width: 1000px;
+     							height:300px;
+							}
+		
+		</style>
+		
+		
+		<script>
+		
+		// var decs
+		// var theTextField;
+		var theTextArea;
+		var wordCount;
+		var timeDiv
+		var currentdate = new Date(); 
+		var theButton;
+		var theButton2;
+		var outputDiv;	
+		var outterDiv;
+		var errorDiv;	
+		var toggle = false;		
+		var visible = false;
+		var failDivVisible = false;
+
+		function decrement ()
+		{
+
+		}
+		
+
+		
+		function formSubmitted()
+		{
+			var sawAHashtag = false;
+			var sawAPercent = false;
+						
+			
+			
+			var strUser = document.getElementById("theUsername").value;
+			var onlyletters = false;
+			var isUpper= true;
+			var isLower= true;
+			var notLetter = false;
+			
+			for (var i = 0; i < strUser.length; i++)
+			{
+
+				
+
+				var currentCharCode = strUser.charCodeAt(i);
+				
+				if((currentCharCode >= 65 && currentCharCode <= 90) || (currentCharCode >= 97 && currentCharCode <= 122))  
+				{
+					onlyletters = true;
+				}
+				else if((currentCharCode >= 1 && currentCharCode <= 89) || (currentCharCode >= 91 && currentCharCode <= 96) || (currentCharCode >= 97 && currentCharCode <= 127))
+				{
+					notLetter = true;
+				}
+
+			}
+
+			var strPassword = document.getElementById("thePassword").value;
+			var hasUpperCase = false;
+			var hasLowerCase = false;
+			var hasNumb = false;
+			var Verifiedpassword = true;
+			var upperCase = 0;
+        	var lowerCase = 0;
+        	var number = 0;
+        	var badThings = " ";
+
+
+			for (var i = 0; i < strPassword.length; i++)
+			{
+				//currentChar = strUser.charAt(i);
+				var currentCharCode = strPassword.charAt(i);
+				
+				if((currentCharCode >= 'A' && currentCharCode <= 'Z'))  
+				{
+					upperCase ++;
+				}
+				else if((currentCharCode >= 'a' && currentCharCode <= 'z'))
+				{
+					lowerCase ++;
+					
+				}
+				else if((currentCharCode >= '0' && currentCharCode <= '9')) 
+				{
+					number++;
+				}
+				
+				
+				//Setting if bool for present charaters
+				if(upperCase !== 0)
+				{
+					hasUpperCase =true;
+					Verifiedpassword = true;
+				}
+				if(lowerCase !== 0)
+				{
+					hasLowerCase = true;
+					Verifiedpassword = true;
+				}
+				if(number > 0)
+				{
+					hasNumb = true;
+					Verifiedpassword = true;
+				}
+				else
+				{
+					Verifiedpassword = false;
+				}
+					
+
+
+			
+			}
+
+	
+
+
+
+			//ID Validation
+			var strID = document.getElementById("theID").value;
+			var numbsID = false;
+			var notNumbs = false;
+			var exactlyNineNum = false;
+
+			for (var i = 0; i < strID.length; i++)
+			{
+				var currentCharID = strID.charAt(i);
+				var currentCharCodeTwo = strID.charCodeAt(i);
+
+				if((currentCharID >= '0' && currentCharID <= '9'))  
+				{
+					numbsID = true;
+				}
+				else if((currentCharCodeTwo >= 1 && currentCharCodeTwo <= 47) || (currentCharCodeTwo >= 58 && currentCharCodeTwo <= 127))
+				{
+					notNumbs = true;
+				}
+				else if(strID.length == 9)
+				{
+					
+					exactlyNineNum = true;
+				}
+				else
+				{
+					notNumbs = false;
+					numbsID = false;
+				}
+
+			}
+
+
+				
+			
+
+			if (onlyletters && !notLetter && !notNumbs && numbsID && strID.length == 9 && hasUpperCase && hasLowerCase && hasNumb && Verifiedpassword)
+			{
+				var good = "";
+
+				good += "Form Valid<br>";
+		
+				
+				outputDiv.innerHTML = good;			
+				
+				document.getElementById("outterDiv").style.backgroundColor = "white";	
+				
+				outputDiv.setAttribute("class", "visible");	
+				errorDiv.setAttribute("class", "invisible");	
+
+				
+			}
+			else
+			{
+	
+				badThings += "FORM INVALID<br><br>";
+				var badThings = " ";
+				if(strUser == "" || strPassword == "" || strID == "")
+				{
+					badThings += "You left one or more fields without an Input <br>"
+				}
+				if(!onlyletters || notLetter)
+				{
+					badThings += "USERNAME:  letters in username only<br>";
+				}
+				if(!numbsID || notNumbs)
+				{
+					badThings += "ID: Must only Numbers in ID <br>";
+				}
+				if(strID.length !== 9)
+				{
+					badThings += "ID: Must have exactly 9 numbers <br>";
+				}
+				if(!hasUpperCase)
+				{
+					badThings += "PASSWORD:  Must have at least one uppercase <br>";
+				}
+				if(!hasLowerCase)
+				{
+					badThings += "PASSWORD: Must have at least one uppercase <br>";
+				}
+				if(!hasNumb)
+				{
+					badThings += "PASSWORD: Must have at least one number <br>";
+				}
+				
+
+				errorDiv.innerHTML = badThings;
+
+				timeDiv.innerHTML = currentdate.getHours() +":" +  currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+				document.getElementById("outterDiv").style.backgroundColor = "#FB8162";
+			
+				errorDiv.setAttribute("class", "visible");	
+				outputDiv.setAttribute("class", "invisible");	
+			}
+		
+
+			//outputDiv.setAttribute("class", "visible");	
+			visible = true;
+		}
+
+		// function getSubmissionTime
+		// {
+
+		// }
+		
+		function typedInTextArea()
+		{
+			var currentContents = theTextArea.value;
+			var words = currentContents.split(" ");
+			// NOTE: the whitespace regexp  /\s+/ can also work instead of " ", with no quotes
+			//     ...currentContents.split(\s+);
+			
+			
+			var howManyWords = words.length; //note: words is an array of the words typed
+			
+			if(words.length === 25) 
+			{
+				document.getElementById("theTextArea").disabled  = true;
+			}
+			else
+			{
+				document.getElementById("theTextArea").disabled  = false;
+			}
+
+			
+			wordCount.innerHTML = 25-howManyWords;
+			
+			
+		}
+		
+		function init()
+		{
+			theTextField = document.getElementById("theTextField");
+
+			// document.getElementById("theTextArea").disabled  = false;
+			
+			theTextArea =  document.getElementById("theTextArea");
+			theTextArea.addEventListener("keydown", typedInTextArea);
+			
+			wordCount =  document.getElementById("wordCount");
+			timeDiv = document.getElementById("timeDiv");
+
+			theButton = document.getElementById("theButton");
+			theButton.addEventListener("click", formSubmitted);
+
+	
+			
+			outputDiv = document.getElementById("outputDiv");
+			outputDiv.setAttribute("class", "invisible");
+
+			errorDiv = document.getElementById("errorDiv");
+			errorDiv.setAttribute("class", "invisible");
+
+		}
+		
+		
+		window.addEventListener("load", init);
+		
+		
+		</script>
+	</head>
+
+	<body>
+		
+		<div class = "outterDiv" id = "outterDiv">
+		<h1>484 Lab 1</h1>
+		
+		<form method="get" action="#">
+
+			<label id = "text"> 
+
+				<!-- <input type="text" name="theTextField" id="theTextField" value=""> -->
+
+			</label>	
+			
+			<br>
+			
+			<label id="username"> Enter Username:<br>
+				<input type="text" name="theUsername" id="theUsername" value="">
+			</label>	
+
+ 			<br><br><br>
+
+			<label> Enter Password:</label>	<br>
+
+			<input type="password" name="thePassword" id="thePassword" value="">
+
+		
+
+
+			<br><br><br>
+<!-- 
+			<input type="text" id="myLabel">
+			<input type="text" id="myLabelOne">
+			<input type="text" id="myLabelTwo"> -->
+			
+
+			<label> Enter ID:</label>	<br>	
+
+			<input type="text" name="theID" id="theID" value="">
+
+		
+
+
+			<br><br><br>
+
+			<label> Much more text here:
+
+			
+			</label>
+			<br>
+			<textarea name="theTextArea" id="theTextArea" rows="12" cols="80"></textarea>
+			<br>
+
+			Number of words: <span id="wordCount"></span>
+			<br><br><br>
+
+
+			<input type="button" id="theButton" value="Submit">
+
+			<!-- <input type="button" id="theButton2" value="Toggle Color">
+			<input type="button" id="theButton2" value="Toggle Color"> -->
+
+			<br>
+
+			<div id="timeDiv">Submission time: <div>
+
+		</form>
+
+		<br><br><br>
+
+		<div id="outputDiv"></div>	
+		<div id = "errorDiv"></div>	
+
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,136 @@
+/*
+css test file
+*/
+       body{background-color: rgb(37, 57, 68);}
+
+        em {font-weight: lighter;
+        color: rgb(176, 176, 204);}
+
+        #container{border:1px solid rgb(0, 0, 0);
+        background-color: #fff;
+        width:1000px;
+        height:830px;
+        position: fixed;
+        top: 30%;
+        left: 30%;
+        /* margin-top: -50px;
+        margin-left: -100px; */
+        border:1px solid black;
+        }
+        
+        .box{border:1px solid rgb(0, 0, 0);
+        background-color: rgb(188, 201, 189);
+        position:absolute;
+        top: 20px;
+        left: 20px;
+        width:950px;
+        height: 120px;}
+
+        .smallerbox{
+        font-family: sans-serif;
+        font-weight: lighter;
+        left: 17%;
+        bottom: 15%;
+        margin-right: 20%;
+        text-align: right;
+        position: absolute;
+        width: 750px;
+        line-height:  25px;
+        height: 90px;
+        }
+
+        .boxtwo{
+        font-family:  sans-serif;
+        color: white;
+        text-indent: 3%;
+        font-weight: lighter;
+        border:1px solid rgb(7, 0, 0);
+        background-color: rgb(233, 59, 16);
+        top: 175px;
+        left: 20px;
+        position:absolute;
+        width:280px;
+        height: 255px;   
+        }
+
+
+        .boxpurple{
+        border: 1px black;
+        font-family:  sans-serif;
+        border:1px solid rgb(7, 0, 0);
+        background-color: rgb(208, 196, 220);
+        top: 175px;
+        left: 320px;
+        position:absolute;
+        width:650px;
+        height: 300px;   
+        }
+
+        .titletext{
+        font-family: serif;
+        font-size: 35px;
+        }
+
+        .textbox{
+        border: 1px black;
+        font-family:  serif;
+        font-size: 15.5px;
+        line-height: 25px;
+        top: 5px;
+        left: 25px;
+        position:absolute;
+        width:380px;
+        height: 190px;   
+        text-align: justify;
+        }
+
+        .downsize{
+                width: small;
+                height: small;
+        }
+
+
+        .image-one{
+        margin-top: 70px;
+        margin-right: 20px;
+        float: right;
+        display: block;
+        top: 15px;
+        }
+
+
+        .textsizeup{
+        font-size: 29px;
+        } 
+
+        .shiftDown{position: relative;
+        top: 500px;}
+
+        .fontThinner{
+        font-weight: 300;}
+
+        .fontChange{font-family: serif;
+        }
+        .cssposition{
+                top: 19%;
+                right: 19%;
+                font-size: xx-large;
+        }
+
+        .justifyText{text-align: justify;}
+
+        .boxtwo a{
+        font-size: smaller;
+        color: #fff;
+        text-decoration: none;
+        }
+
+        .boxtwo a:hover
+        {
+                color: rgb(204, 81, 81);
+                text-decoration: underline;
+        }
+
+        .smallerbox a{
+                color: #fff;
+        }

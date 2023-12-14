@@ -1,0 +1,32 @@
+Notes about the contained files.
+
+		ADMIN - is a preset user and admin page can be navigated to if you login with username: admin and password: admin.
+
+
+> Lab2.php: This file is where the project contains and begins. Its is the page that displays a user the register and login forms and directs them accordingly
+
+> dbDemo.php: This page is where the user is navigated to once a user hits register and notifies then if they have sucessfully registered or not. Also handles the input to database logic.
+
+> loggedIn.php: This page receives and evaluates the input then directs user to either normal user or admin page 
+
+> userPage: Page dedicated for regular non-admin users which is navigated through 'login' from the Lab2.php. Simple page that consists of 3 buttons to toggle background color and and a 
+            button to logout to return to Lab2.php(the register/login page).
+
+> adminPage: Page is dedicated for admin user and is navigated through 'login' from the Lab2.php if user inputs username: 'admin' and password: 'admin'. Page has a table of all users and 
+            is orginized by username assending order also has button to return to Lab2.php(the register/login page).
+
+> Lab2.mysql : This file contains my sqldump
+	- Note: To actually get this file to dump all the details I had to temporarily comment out the db_port and uncomment once the sql dump was completed.
+
+
+
+
+
+<<<<<<Additional Bugs and Shortcomings>>>>>>
+
+	- The only restriction for registration is that the input may not be empty for either username or password. 
+		- A user can also register with a username or password that is already present in the database.
+	
+	- Extremely minimal CSS.
+
+	- This project works properly only when in the htdocs file location on MAMP
